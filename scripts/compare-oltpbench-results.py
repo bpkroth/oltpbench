@@ -158,7 +158,7 @@ def analyzeAggregateResultsFile(resultsFile):
     return resultsFileAnalysis
 
 def printAggregateResultsFileAnalysisPart(resultsFile, resultsFileAnalysis, metric):
-    print 'ResultsFile {0:45s}:  {1:12s}: Avg: {2:12.3f}, StdDev: {3:12.3f}, Median: {4:12.3f}, P90: {5:12.3f}, P99: {6:12.3f}, Max: {7:12.3f}'.format(
+    print 'ResultsFile {0:55s}:  {1:12s}: Avg: {2:12.3f}, StdDev: {3:12.3f}, Median: {4:12.3f}, P90: {5:12.3f}, P99: {6:12.3f}, Max: {7:12.3f}'.format(
         basename(resultsFile.name),
         metric,
         resultsFileAnalysis[metric]['avg'],
@@ -182,7 +182,7 @@ def compareAggregateResultsFiles(resultsFile1, resultsFile2):
             resultsComparisonsDiff[agg] = float(resultsFile2Analysis[metric][agg] - resultsFile1Analysis[metric][agg])
             resultsComparisonsPct[agg] = float(resultsComparisonsDiff[agg] / resultsFile1Analysis[metric][agg] * 100)
 
-        print 'ResultsFile1 vs ResultsFile2 {0:28s}:  {1:12s}: Avg: {2:+12.3f}, StdDev: {3:+12.3f}, Median: {4:+12.3f}, P90: {5:+12.3f}, P95: {6:+12.3f}, Max: {7:+12.3f}'.format(
+        print 'ResultsFile1 vs ResultsFile2 {0:38s}:  {1:12s}: Avg: {2:+12.3f}, StdDev: {3:+12.3f}, Median: {4:+12.3f}, P90: {5:+12.3f}, P95: {6:+12.3f}, Max: {7:+12.3f}'.format(
             '', # padding
             metric,
             resultsComparisonsDiff['avg'],
@@ -192,7 +192,7 @@ def compareAggregateResultsFiles(resultsFile1, resultsFile2):
             resultsComparisonsDiff['p99'],
             resultsComparisonsDiff['max'])
 
-        print 'ResultsFile1 vs ResultsFile2 (%) {0:24s}:  {1:12s}: Avg: {2:+11.3f}%, StdDev: {3:+11.3f}%, Median: {4:+11.3f}%, P90: {5:+11.3f}%, P99: {6:+11.3f}%, Max: {7:+11.3f}%'.format(
+        print 'ResultsFile1 vs ResultsFile2 (%) {0:34s}:  {1:12s}: Avg: {2:+11.3f}%, StdDev: {3:+11.3f}%, Median: {4:+11.3f}%, P90: {5:+11.3f}%, P99: {6:+11.3f}%, Max: {7:+11.3f}%'.format(
             '', # padding
             metric,
             resultsComparisonsPct['avg'],
@@ -244,7 +244,7 @@ def analyzeRawResultsFile(resultsFile):
     return resultsFileAnalysis
 
 def printRawResultsFileAnalysis(resultsFile, resultsFileAnalysis):
-    print 'ResultsFile {0:45s}: Transactions: {1:12d}, Time (s): {2: 12.3f}, Throughput (txns/sec): {3:12.3f},  Latencies (us):  Average: {4:12.3f}, StdDev: {5:12.3f}, Median: {6:12.3f}, P90: {7:12.3f}, P99: {8:12.3f}, Max: {9:12.3f}'.format(
+    print 'ResultsFile {0:55s}: Transactions: {1:12d}, Time (s): {2: 12.3f}, Throughput (txns/sec): {3:12.3f},  Latencies (us):  Average: {4:12.3f}, StdDev: {5:12.3f}, Median: {6:12.3f}, P90: {7:12.3f}, P99: {8:12.3f}, Max: {9:12.3f}'.format(
             basename(resultsFile.name),
             resultsFileAnalysis['totalTransactions'],
             resultsFileAnalysis['totalTime'],
@@ -271,7 +271,7 @@ def compareRawResultsFiles(resultsFile1, resultsFile2):
         resultsComparisonsDiff[key] = float(resultsFile2Analysis[key] - resultsFile1Analysis[key])
         resultsComparisonsPct[key] = float(resultsComparisonsDiff[key] / resultsFile1Analysis[key] * 100)
 
-    print 'ResultsFile1 vs ResultsFile2 {0:28s}: Transactions: {1:+12d}, Time (s): {2:+12.3f}, Throughput (txns/sec): {3:+12.3f},  Latencies (us):  Average: {4:+12.3f}, StdDev: {5:+12.3f}, Median: {6:+12.3f}, P90: {7:+12.3f}, P99: {8:+12.3f}, Max: {9:+12.3f}'.format(
+    print 'ResultsFile1 vs ResultsFile2 {0:38s}: Transactions: {1:+12d}, Time (s): {2:+12.3f}, Throughput (txns/sec): {3:+12.3f},  Latencies (us):  Average: {4:+12.3f}, StdDev: {5:+12.3f}, Median: {6:+12.3f}, P90: {7:+12.3f}, P99: {8:+12.3f}, Max: {9:+12.3f}'.format(
             '', # padding
             int(resultsComparisonsDiff['totalTransactions']),
             resultsComparisonsDiff['totalTime'],
@@ -283,7 +283,7 @@ def compareRawResultsFiles(resultsFile1, resultsFile2):
             resultsComparisonsDiff['p99'],
             resultsComparisonsDiff['max'])
 
-    print 'ResultsFile1 vs ResultsFile2 (%) {0:24s}: Transactions: {1:+11.3f}%, Time (s): {2:+11.3f}%, Throughput (txns/sec): {3:+11.3f}%,  Latencies (us):  Average: {4:+11.3f}%, StdDev: {5:+11.3f}%, Median: {6:+11.3f}%, P90: {7:+11.3f}%, P99: {8:+11.3f}%, Max: {9:+11.3f}%'.format(
+    print 'ResultsFile1 vs ResultsFile2 (%) {0:34s}: Transactions: {1:+11.3f}%, Time (s): {2:+11.3f}%, Throughput (txns/sec): {3:+11.3f}%,  Latencies (us):  Average: {4:+11.3f}%, StdDev: {5:+11.3f}%, Median: {6:+11.3f}%, P90: {7:+11.3f}%, P99: {8:+11.3f}%, Max: {9:+11.3f}%'.format(
             '', # padding
             resultsComparisonsPct['totalTransactions'],
             resultsComparisonsPct['totalTime'],
